@@ -1,0 +1,156 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #dbdbdb;
+  margin: 20px 0 10px 0;
+  height: auto;
+  font-size: 12px;
+  font-weight: 700;
+  width: 474px;
+  background-color: #ffffff;
+}
+
+.feedComponentwithPadding {
+  padding-left: 10px;
+}
+
+.feedHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.profileImage {
+  height: 35px;
+  width: 35px;
+  margin-right: 13px;
+}
+
+.feedHeader .profileName {
+  width: 80%;
+  margin-right: 5px;
+}
+
+.settingsIcon {
+}
+
+/* .contentContainer {
+  width: max-content;
+} */
+
+.media {
+  max-width: 100%;
+}
+
+.postDescription {
+  font-weight: 400;
+}
+
+.settingsIcon {
+}
+
+.contentContainer {
+  width: 100%;
+}
+
+.viewersContainer {
+  display: flex;
+  flex-direction: row;
+  height: 8%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.viewersIcon {
+  height: 22px;
+  width: 22px;
+  margin-right: 14px;
+}
+
+.viewersIcon:last-of-type {
+  margin-left: auto;
+}
+
+.likeImage {
+  animation: animate 1s steps(30);
+}
+
+@keyframes animate {
+  0% {
+    height: 22px;
+    width: 22px;
+  }
+  50% {
+    height: 28px;
+    width: 28px;
+  }
+  100% {
+    height: 22px;
+    width: 22px;
+  }
+}
+
+.descriptionContainer {
+  display: flex;
+  height: 17px;
+}
+
+.descriptionContainer .profileName {
+  margin-top: 6px;
+  margin-right: 5px;
+}
+
+.postDescription {
+  margin-top: 6px;
+}
+
+.numberOfComments {
+  margin-top: 6px;
+  height: 17px;
+  color: #8e8e8e;
+  font-weight: 400;
+}
+
+.numberOfDays {
+  margin-top: 6px;
+  margin-bottom: 15px;
+  color: #8e8e8e;
+  font-size: xx-small;
+  font-weight: 400;
+}
+
+.commentingContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 12px 4px 12px 14px;
+  border-top: solid 1px #dbdbdb;
+}
+
+.commentInput {
+  width: 80%;
+  border: none;
+}
+
+.commentInput::placeholder {
+  font-size: 13px;
+}
+
+.postButton {
+  border: none;
+  background-color: #ffffff;
+  color: #0096f6;
+  font-weight: 600;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 475px) {
+  .feed {
+    width: calc(100vw);
+  }
+}

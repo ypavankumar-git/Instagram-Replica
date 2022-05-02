@@ -1,0 +1,103 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 100%;
+  border-bottom: solid 1px #dbdbdb;
+  justify-content: center;
+  background-color: #ffffff;
+  position: fixed;
+}
+
+.headerComponents {
+  height: 100%;
+  /* width: 75%; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.headerTitleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  /* width: 315px; */
+}
+
+.headerTitle {
+  margin-top: 5px;
+  height: 65%;
+  width: 95px;
+}
+
+.spacingAfterTitle {
+  width: 220px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 65%;
+  width: 230px;
+  color: #8e8e8e;
+  background-color: #ebebeb;
+  border-radius: 6px;
+}
+
+.searchIcon {
+  margin: 0px 10px 0px 10px;
+}
+
+.searchPlaceHolder {
+}
+
+.OptionsContainer {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  width: fit-content;
+  /* margin-left: 8%; */
+}
+
+.optionSpacing {
+  width: 65px;
+}
+
+.options {
+  margin: 0px 10px 0 10px;
+  width: 20px;
+  /* height: 60%; */
+}
+
+.profileIcon {
+  /* height: 80%; */
+  width: 24px;
+}
+
+@media only screen and (max-width: 975px) {
+  .spacingAfterTitle {
+    min-width: 20px;
+    width: calc(220px - (975px - 100vw));
+  }
+  .optionSpacing {
+    min-width: 20px;
+    width: calc(65px - (975px - 100vw));
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .search {
+    display: none;
+  }
+  .headerComponents {
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 393px) {
+  .search {
+    display: none;
+  }
+}

@@ -1,0 +1,18 @@
+.homePageContainer {
+  height: 100%;
+  background-color: #fafafa;
+}
+
+.loginPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedsContainer {
+  display: flex;
+  justify-content: center;
+  background-color: #fbfbfb;
+  overflow: scroll;
+}

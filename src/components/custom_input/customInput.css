@@ -1,0 +1,44 @@
+input {
+  -webkit-autofill: off;
+}
+
+.customInputContainer {
+  height: 31px;
+  width: 237px;
+  margin-bottom: 8px;
+}
+
+.inputInActive {
+  padding: 9px 0px 7px 8px;
+}
+
+.inputActive {
+  padding: 14px 0px 2px 8px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.placeholderInActive {
+  position: relative;
+  top: -28px;
+  left: 8px;
+  font-size: 11px;
+  color: rgb(131, 130, 130);
+}
+
+.placeholderActive {
+  position: relative;
+  top: -35px;
+  left: 8px;
+  font-size: 9.5px;
+  color: rgb(131, 130, 130);
+}
+
+.showButton {
+  position: relative;
+  left: 150px;
+  top: -26px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
