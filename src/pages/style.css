@@ -1,0 +1,44 @@
+.homePageWrapper {
+  height: 100%;
+  background-color: #fafafa;
+}
+
+.loginPageWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbfbfb;
+  overflow: scroll;
+}
+
+.homePageStoriesWrapper {
+  width: 500px;
+  margin-top: 80px;
+  overflow: scroll;
+  background-color: #ffffff;
+  border: solid 1px #dbdbdb;
+  padding: 7px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.profileWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbfbfb;
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

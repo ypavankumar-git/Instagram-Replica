@@ -1,0 +1,82 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  margin-top: 70px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+
+.profileInfo .profileImage {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  height: 100%;
+  width: 300px;
+}
+
+.profileInfo .profileImage img {
+  height: 130px;
+  width: 130px;
+  /* max-width: 100%; */
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.profileNameAndEditables {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.profileNameAndEditables .profileName {
+  font-weight: 320;
+  font-size: x-large;
+}
+
+.editButton {
+  height: 25px;
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+}
+
+.profileCounts {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.fullname {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profileDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profileDescription p {
+  margin: 0px;
+}
+
+.profileDescription .description {
+  font-size: 14px;
+  font-weight: 300px;
+}

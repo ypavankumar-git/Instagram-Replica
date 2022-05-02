@@ -1,0 +1,26 @@
+.feedsSectionContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.loadingIconContainer {
+  height: 30px;
+  width: 30px;
+  margin-top: 50px;
+}
+
+.loadingIconContainer img {
+  max-height: 100%;
+  max-width: 100%;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

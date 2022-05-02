@@ -1,0 +1,166 @@
+.shareDialogContainer {
+  height: 78%;
+  width: 100%;
+  margin-top: 5%;
+}
+
+.sharePopup {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+.shareTitleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shareTitle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.selectedReceiversContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.toTitle {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.selectedReceivers {
+  padding: 5px;
+  border: none;
+}
+
+.selectedReceivers::placeholder {
+  font-size: 13px;
+}
+
+.suggestionsContainer {
+  max-height: 30%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.suggestedUsersContainer {
+  display: flex;
+  flex-direction: column;
+  /* gap: 15px; */
+}
+
+.suggestedTitle {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.suggestedUser {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.suggestedUser:hover {
+  background-color: #f6f6f6;
+}
+
+.suggestedUserProfileImageContainer {
+  height: 40px;
+  width: 40px;
+}
+
+.suggestedUserProfileImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.suggestedUserDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.suggestedUserProfileName {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.suggestedUserFullname {
+  font-size: 12px;
+  font-weight: 400;
+  color: #989898;
+}
+
+.suggestedUserSelectButton {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.suggestedUserSelectButtonInActive {
+  border: 1.5px solid black;
+  background-color: #ffffff;
+}
+
+.suggestedUserSelectButtonActive {
+  border: none;
+  background-color: #0097f6;
+}
+
+.shareSendButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.shareSendButton {
+  height: 40px;
+  width: 100%;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  background-color: #0096f6;
+}
+
+/* .shareSendButtonActive {
+  background-color: #0096f6;
+}
+
+.shareSendButtonInActive {
+  background-color: #bedffd;
+} */
+
+.borderBottom {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.paddingLeft {
+  padding-left: 10px;
+}
+
+.sharePopup-closeIcon {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  height: 20px;
+  width: 20px;
+}

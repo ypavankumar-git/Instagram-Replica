@@ -1,0 +1,35 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  border-top: 1px solid #dbdbdb;
+}
+
+.postTitle {
+  text-align: center;
+}
+
+.postContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+}
+
+.postImageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32.5%;
+  height: 170px;
+}
+
+.postImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.postImage:hover {
+  filter: brightness();
+}

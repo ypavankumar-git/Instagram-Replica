@@ -1,0 +1,238 @@
+.box {
+  border: 0.5px solid #dbdbdb;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+}
+
+.input {
+  border-radius: 2px;
+  margin-bottom: 2.5%;
+  height: 30px;
+  background-color: #f6f6f6;
+}
+
+.insta {
+  height: 50px;
+  width: 150px;
+  margin: 40px 0 0 0;
+}
+
+.mainContainer {
+  margin-top: 5%;
+  height: 591px;
+  width: 315px;
+  background-color: inherit;
+}
+
+.upperContainer {
+  /* height: 80%; */
+  margin-bottom: 10%;
+}
+
+.instaTitleContainer {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.instaTitleContainer p {
+  width: 85%;
+  color: rgb(142, 142, 142);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 0% 12% 7% 12%;
+}
+
+.loginWithFacebookButton {
+  display: flex;
+  flex-direction: row;
+  border: 0px;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  color: white;
+  background-color: rgb(67, 144, 245);
+  font-style: white;
+}
+
+.loginWithFacebookButton .f {
+  display: flex;
+  height: 10px;
+  width: 10px;
+  padding: 0px 2px 4px 2px;
+  color: rgb(67, 144, 245);
+  background-color: white;
+  font-weight: 700;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.loginWithFacebookButton p {
+  font-size: small;
+  font-weight: 600;
+}
+
+.facebookOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.orDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}
+
+.orDiv p {
+  color: rgb(142, 142, 142);
+  font-size: small;
+  font-weight: 600;
+  margin: 0 10px 0 10px;
+}
+
+.line {
+  height: 0.4px;
+  width: 90px;
+  border-bottom: 1px solid rgb(206, 206, 206);
+}
+
+.loginWithFacebook {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(0, 97, 161);
+}
+
+.f {
+  display: flex;
+  height: 10px;
+  width: 10px;
+  padding: 0px 2px 4px 2px;
+  background-color: rgb(0, 97, 161);
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.loginWithFacebook p {
+  font-size: small;
+  font-weight: 600;
+}
+
+.wrongUsername,
+.wrongPassword {
+  width: 65%;
+  text-align: center;
+  font-size: 11px;
+  color: red;
+}
+
+.forgotPassword {
+  color: rgb(0, 97, 161);
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+input::placeholder {
+  font-size: 80%;
+}
+
+input:focus {
+  outline: none;
+  border-color: #756e6e;
+}
+
+.submitButton {
+  background-color: skyblue;
+  color: white;
+  height: 27px;
+  border: 0;
+  border-radius: 4px;
+  margin: 7px 0 5px 0;
+  cursor: pointer;
+}
+
+.termsAndConditions {
+  text-align: center;
+  font-size: 11px;
+  color: rgb(142, 142, 142);
+}
+
+.lowerContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.question {
+  font-size: 75%;
+  padding: 1%;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  text-align: center;
+  font-size: 75%;
+  padding-top: 4.9%;
+}
+
+.applinkContainer {
+}
+
+.paraContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  padding: 2%;
+}
+
+.storeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.storeIcon {
+  height: 35%;
+  width: 35%;
+}
+
+.validationIcon {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 5.5px;
+  left: 210px;
+  background-color: #f6f6f6;
+}
+
+.acceptable {
+  filter: grayscale(500%);
+  background-color: inherit;
+}
+.df {
+  position: relative;
+}

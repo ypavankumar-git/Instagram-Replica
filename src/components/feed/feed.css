@@ -1,0 +1,187 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #dbdbdb;
+  margin: 20px 0 10px 0;
+  height: max-content;
+  font-size: 12px;
+  font-weight: 700;
+  width: 500px;
+  background-color: #ffffff;
+}
+
+.feedComponentwithPadding {
+  padding-left: 10px;
+}
+
+.feedHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.feedHeader .profileImage {
+  height: 35px;
+  width: 35px;
+  margin-right: 13px;
+}
+
+.feedHeader .profileName {
+  /* width: 80%; */
+  margin-right: 5px;
+}
+
+.feedHeader .settingsIcon {
+  margin-left: auto;
+  margin-right: 14px;
+}
+
+.postDescription {
+  font-weight: 400;
+}
+
+.imageContainer {
+  width: 100%;
+}
+
+.imageContainer .image {
+  object-fit: cover;
+  width: 100%;
+}
+
+.actionsContainer {
+  height: 170px;
+}
+
+.actionsIconContainer {
+  display: flex;
+  flex-direction: row;
+  height: 14px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.actionIcon {
+  height: 22px;
+  width: 22px;
+  margin-right: 14px;
+}
+
+.actionIcon:last-of-type {
+  margin-left: auto;
+}
+
+.descriptionContainer {
+  display: flex;
+  height: 17px;
+}
+
+.descriptionContainer .profileName {
+  margin-top: 6px;
+  margin-right: 5px;
+}
+
+.postDescription {
+  margin-top: 6px;
+}
+
+.likes {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.numberOfComments {
+  margin-top: 6px;
+  height: 17px;
+  color: #8e8e8e;
+  font-weight: 400;
+}
+
+.numberOfDays {
+  margin-top: 6px;
+  margin-bottom: 15px;
+  color: #8e8e8e;
+  font-size: xx-small;
+  font-weight: 400;
+}
+
+.commentingContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 4px 8px 14px;
+  border-top: solid 0.5px #dbdbdb;
+}
+
+.commentInput {
+  width: 80%;
+  border: none;
+}
+
+.commentInput::placeholder {
+  font-size: 13px;
+}
+
+.postButton {
+  border: none;
+  background-color: #ffffff;
+  color: #0096f6;
+  font-weight: 600;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.spanText {
+  margin: 0;
+}
+
+@media only screen and (max-width: 475px) {
+  .feed {
+    width: calc(100vw);
+  }
+}
+
+/* .commentPopup {
+  position: absolute;
+  left: 10%; 
+  height: 95vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+   opacity: 2; 
+  background-color: #fdfbfb;
+}
+
+.commentPopupImageContainer {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: black;
+}
+
+.commentPopupImageContainer .image {
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+}
+
+.commentPopupActionsContainer {
+  width: 50%;
+} */
+
+/* .blur {
+  filter: blur(1px);
+}
+
+.visible {
+  visibility: visible;
+}
+
+.notVisible {
+  visibility: hidden;
+} */
