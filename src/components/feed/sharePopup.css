@@ -55,7 +55,6 @@
 .suggestedUsersContainer {
   display: flex;
   flex-direction: column;
-  /* gap: 15px; */
 }
 
 .suggestedTitle {
@@ -140,14 +139,6 @@
   font-size: 15px;
   background-color: #0096f6;
 }
-
-/* .shareSendButtonActive {
-  background-color: #0096f6;
-}
-
-.shareSendButtonInActive {
-  background-color: #bedffd;
-} */
 
 .borderBottom {
   border-bottom: 1px solid #e0e0e0;

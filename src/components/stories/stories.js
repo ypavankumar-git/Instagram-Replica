@@ -1,22 +1,13 @@
+import React from "react";
+import PropTypes from "prop-types";
 import "./stories.css";
 import SampleStories from "../../services/sampleStories";
 import ConvertObjectToMap from "../../utilities/objectToMap";
 
-const Stories = ({ selfProfile }) => {
+function Stories({ selfProfile }) {
   const stories = ConvertObjectToMap(SampleStories);
 
-  //   const addStoryImage = <div className="addStory">+</div>;
-  //   const addStoryUsername = "New";
-
-  //   if (selfProfile) {
-  //     const map = new Map();
-  //     map.set("imageurl", addStoryImage);
-  //     map.set("username", addStoryUsername);
-
-  //     stories.unshift(map);
-  //   }
-
-  const Story = ({ source }) => {
+  function Story({ source }) {
     return (
       <div className="story">
         <div className="storyImage">
@@ -29,7 +20,7 @@ const Stories = ({ selfProfile }) => {
         <p className="username clickable">{source.get("username")}</p>
       </div>
     );
-  };
+  }
 
   return (
     <div className="storyContainer">
@@ -46,6 +37,11 @@ const Stories = ({ selfProfile }) => {
       ))}
     </div>
   );
+}
+
+Stories.propTypes = {
+  selfProfile: PropTypes.bool.isRequired,
+  source: PropTypes.map.isRequired,
 };
 
 export default Stories;

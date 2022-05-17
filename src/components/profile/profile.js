@@ -1,8 +1,10 @@
+import React from "react";
+import PropTypes from "prop-types";
 import "./profile.css";
 import man from "../../assets/man.png";
 import profileSettings from "../../assets/profileSettings.svg";
 
-const Profile = () => {
+function Profile() {
   return (
     <div className="profileContainer">
       <div className="profileInfo">
@@ -11,7 +13,7 @@ const Profile = () => {
         </div>
         <div className="profileDetails">
           <div className="profileNameAndEditables">
-            <p className="profileName">Pavan_Y</p>
+            <p className="profileName">NewUser</p>
             <button className="editButton clickable">Edit Profile</button>
             <img className="clickable" src={profileSettings} alt="settings" />
           </div>
@@ -27,14 +29,14 @@ const Profile = () => {
             </p>
           </div>
           <div className="profileDescription">
-            <p className="fullname">Pavan Kumar Y</p>
+            <p className="fullname">NewUser</p>
             <p className="description">Software Engineer</p>
           </div>
         </div>
       </div>
-      <div className="media"></div>
+      <div className="media" />
     </div>
   );
-};
+}
 
 export default Profile;

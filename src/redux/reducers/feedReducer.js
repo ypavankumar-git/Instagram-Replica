@@ -4,14 +4,13 @@ const initialState = {
 
 export default function FeedReducer(state = initialState, action) {
   switch (action.type) {
-    case "setFeeds": {
+    case 'setFeeds': {
       return {
         feeds: action.payload,
       };
     }
 
-    case "clearFeeds": {
-      console.log("clearFeeds called");
+    case 'clearFeeds': {
       return {
         feeds: action.payload,
       };
