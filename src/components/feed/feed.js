@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import {
   man,
@@ -18,19 +20,19 @@ import "./sharePopup.css";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import SampleComments from "../../services/sampleComments";
-//import SampleData from "../../services/sampleData";
 import ConvertObjectToMap from "../../utilities/objectToMap";
 import SuggestedUsers from "../../services/sampleSuggestedUsers";
 
-const Feed = ({ feed }) => {
+function Feed({ feed }) {
   const [likedPost, setLikedpost] = useState(false);
   const [commentPopup, setCommentPopup] = useState(false);
   const [sharePopup, setSharePopup] = useState(false);
+  let newComment = null;
 
-  const commentsArr = ConvertObjectToMap(SampleComments);
+  const [commentsArr, setCommentsArr] = useState(
+    ConvertObjectToMap(SampleComments)
+  );
   const suggestedUsersArr = ConvertObjectToMap(SuggestedUsers);
-
-  // console.log(suggestedUsersArr);
 
   const toggleLike = () => {
     setLikedpost((prevState) => !prevState);
@@ -44,6 +46,23 @@ const Feed = ({ feed }) => {
     setSharePopup((prevState) => !prevState);
   };
 
+  const setNewComment = (value) => {
+    newComment = value;
+  };
+
+  const updateComment = () => {
+    const newCommentMap = new Map();
+    newCommentMap.set(
+      "profileImage",
+      "https://cdn-icons-png.flaticon.com/512/4139/4139981.png"
+    );
+    newCommentMap.set("userName", "NewUser");
+    newCommentMap.set("comment", newComment);
+    newCommentMap.set("commentedTime", "just now");
+    newCommentMap.set("likesForComment", "0");
+    setCommentsArr((prevState) => [newCommentMap, ...prevState]);
+  };
+
   const HeaderContainer = (
     <div className="feedHeader feedComponentwithPadding">
       <img className="profileImage clickable" src={man} alt="profile" />
@@ -55,7 +74,7 @@ const Feed = ({ feed }) => {
   const ActionsIconContainer = (
     <div className="actionsIconContainer feedComponentwithPadding">
       <img
-        className={"likeImage actionIcon clickable"}
+        className="likeImage actionIcon clickable"
         onClick={() => toggleLike()}
         src={likedPost ? liked : notLiked}
         alt="like"
@@ -78,7 +97,7 @@ const Feed = ({ feed }) => {
 
   const LikeCount = (
     <div className="likes clickable feedComponentwithPadding">
-      {feed.get("likes")} likes
+      {likedPost ? parseInt(feed.get("likes")) + 1 : feed.get("likes")} likes
     </div>
   );
 
@@ -94,8 +113,11 @@ const Feed = ({ feed }) => {
       <input
         className="commentInput clickable"
         placeholder="Add a comment..."
+        onChange={(e) => setNewComment(e.target.value)}
       />
-      <button className="postButton clickable">Post</button>
+      <button className="postButton clickable" onClick={() => updateComment()}>
+        Post
+      </button>
     </div>
   );
 
@@ -106,7 +128,7 @@ const Feed = ({ feed }) => {
     </div>
   );
 
-  const ActionsContainer = () => {
+  function ActionsContainer() {
     return (
       <div className="actionsContainer">
         {ActionsIconContainer}
@@ -119,16 +141,16 @@ const Feed = ({ feed }) => {
         {CommentingContainer}
       </div>
     );
-  };
+  }
 
-  const Comment = ({ comment }) => {
+  function Comment({ comment }) {
     return (
       <div className="commentPopup-commentContainer">
         <div className="commentPopup-comment-profileImageContainer">
           <img
             className="commentPopup-comment-profileImage"
             src={comment.get("profileImage")}
-            alt="image"
+            alt="profile"
           />
         </div>
         <div className="commentPopup-commentDisplay">
@@ -153,9 +175,9 @@ const Feed = ({ feed }) => {
         </div>
       </div>
     );
-  };
+  }
 
-  const SuggestedUser = ({ suggestedUser }) => {
+  function SuggestedUser({ suggestedUser }) {
     const [buttonActive, setButtonActive] = useState(false);
 
     const toggleButton = () => {
@@ -184,10 +206,11 @@ const Feed = ({ feed }) => {
           className="suggestedUserSelectButton"
           src={buttonActive ? radioButtonSelected : radioButton}
           onClick={() => toggleButton()}
+          alt="select"
         />
       </div>
     );
-  };
+  }
 
   return (
     <div className="feed">
@@ -231,11 +254,9 @@ const Feed = ({ feed }) => {
                     {DaysCount}
                   </div>
                 </div>
-                {commentsArr.map((comment) => {
-                  return (
-                    <Comment comment={comment} key={comment.get("userName")} />
-                  );
-                })}
+                {commentsArr.map((comment) => (
+                  <Comment comment={comment} key={comment.get("userName")} />
+                ))}
               </div>
               {ActionsIconContainer}
               {LikeCount}
@@ -269,69 +290,33 @@ const Feed = ({ feed }) => {
             </div>
             <div className="selectedReceiversContainer borderBottom paddingLeft">
               <p className="toTitle">To:</p>
-              <input
-                className="selectedReceivers"
-                placeholder="Search..."
-              ></input>
+              <input className="selectedReceivers" placeholder="Search..." />
             </div>
             <div className="suggestionsContainer borderBottom">
               <p className="suggestedTitle paddingLeft">Suggested</p>
               <div className="suggestedUsersContainer">
-                {suggestedUsersArr.map((suggestedUser) => {
-                  return (
-                    <SuggestedUser
-                      suggestedUser={suggestedUser}
-                      key={suggestedUser.get("userName")}
-                    />
-                  );
-                })}
+                {suggestedUsersArr.map((suggestedUser) => (
+                  <SuggestedUser
+                    suggestedUser={suggestedUser}
+                    key={suggestedUser.get("userName")}
+                  />
+                ))}
               </div>
             </div>
             <div className="shareSendButtonContainer">
-              <button className={"shareSendButton"}>Send</button>
+              <button className="shareSendButton">Send</button>
             </div>
           </div>
         </DialogContent>
       </Dialog>
     </div>
   );
+}
+
+Feed.propTypes = {
+  feed: PropTypes.any,
+  comment: PropTypes.any,
+  suggestedUser: PropTypes.any,
 };
 
 export default Feed;
-
-{
-  /* <button
-          className={
-            "suggestedUserSelectButton " +
-            (buttonActive
-              ? "suggestedUserSelectButtonActive"
-              : "suggestedUserSelectButtonInActive")
-          }
-          type="radio"
-          onClick={() => toggleButton()}
-        ></button> */
-}
-
-// className={
-//   "shareSendButton " + numberOfUsersSelectedToShare === 0
-//     ? "shareSendButtonInActive"
-//     : "shareSendButtonActive"
-// }
-
-// const [
-//   numberOfUsersSelectedToShare,
-//   setNumberOfUsersSelectedToShare,
-// ] = useState(0);
-
-// const change_numberOfUsersSelectedToShare = (number) => {
-//   let newValue = numberOfUsersSelectedToShare + number;
-//   console.log("newValue is " + newValue);
-//   setNumberOfUsersSelectedToShare(newValue);
-// };
-
-// const handleClick = () => {
-//   console.log("buttonActive is " + buttonActive);
-//   setButtonActive((prevState) => !prevState);
-//   changeNumberOfSelectedUsers(buttonActive ? 1 : -1);
-//   console.log("buttonActive is " + buttonActive);
-// };

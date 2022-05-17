@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import "dotenv/config";
+import PropTypes from "prop-types";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../style.css";
@@ -14,16 +14,17 @@ import {
   wrong,
   acceptable,
 } from "../../assets/index";
-//import Links from "../links/links";
 import { CustomInput } from "../index";
 import store from "../../index";
-import * as messages from "../../constants/signup";
-import * as urls from "../../constants/urls";
+import * as messageConstants from "../../constants/messageConstants";
+import * as urlConstants from "../../constants/urlConstants";
+import * as inputTypeConstants from "../../constants/inputTypeConstants";
 
-const SignUp = () => {
-  const signUpUrl = urls.BACKEND_HOST + urls.SIGNUP_URL;
-  const checkIdUrl = urls.BACKEND_HOST + urls.CHECKID_URL;
-  const checkUsernameUrl = urls.BACKEND_HOST + urls.CHECKUSERNAME_URL;
+function SignUp() {
+  const signUpUrl = urlConstants.BACKEND_HOST + urlConstants.SIGNUP_URL;
+  const checkIdUrl = urlConstants.BACKEND_HOST + urlConstants.CHECKID_URL;
+  const checkUsernameUrl =
+    urlConstants.BACKEND_HOST + urlConstants.CHECKUSERNAME_URL;
   const secret = process.env.REACT_APP_SECRET;
 
   const [id, setId] = useState(null);
@@ -33,76 +34,70 @@ const SignUp = () => {
   const [idFocused, setIdfocused] = useState(true);
   const [usernameFocused, setUsernamefocused] = useState(true);
   const [idValid, setIdvalid] = useState();
+  const [PasswordValid, setPasswordValid] = useState(false);
   const [usernameValid, setUsernamevalid] = useState(true);
   const [allowSignin, setAllowSignin] = useState(false);
 
   const handleSubmit = () => {
-    console.log("handling submit");
-
     let body = {};
-    const encrypted_password = password;
+    const encrypted_password = encrypt(password, secret);
     const type = Validate(id);
 
-    if (type === 'email') {
+    if (type === inputTypeConstants.EMAIL) {
       body = {
-        username: username,
+        username,
         password: encrypted_password,
         email: id,
-        fullname: fullname,
+        fullname,
       };
-    } else if(type === 'mobile') {
+    } else if (type === inputTypeConstants.MOBILE) {
       body = {
-        username: username,
+        username,
         password: encrypted_password,
         mobile: id,
-        fullname: fullname,
+        fullname,
       };
     }
 
     post(signUpUrl, body).then((data) => {
-      console.log(data);
       if (data.id_token) {
         setAllowSignin(true);
-        console.log(allowSignin);
       }
 
       store.dispatch(setTokens(data));
-
     });
   };
 
   const checkIfIdisValid = async (value) => {
     let body = {};
 
-    if (Validate(value) === 'email') {
+    if (Validate(value) === inputTypeConstants.EMAIL) {
       body = {
         email: value,
       };
-    } else if (Validate(value) === 'mobile') {
+    } else if (Validate(value) === inputTypeConstants.MOBILE) {
       body = {
         mobile: value,
       };
-    }
-    else {
+    } else {
       await setIdvalid(false);
       await setIdfocused(false);
-      console.log(idValid, idFocused);
       return;
     }
 
     const res = post(checkIdUrl, body);
 
     res.then((result) => {
-      if (result.availability === "Available") {
+      if (result.availability === messageConstants.AVAILABLE) {
         setIdvalid(true);
-      } else if (result.availability === "Alreadytaken") {
+      } else if (result.availability === messageConstants.ALREADY_TAKEN) {
         setIdvalid(false);
       }
       setIdfocused(false);
     });
   };
 
-  const handleBlur = (value) => {
+  const handleUserNameBlur = (value) => {
     let body = {};
 
     body = {
@@ -112,25 +107,30 @@ const SignUp = () => {
     const res = post(checkUsernameUrl, body);
 
     res.then((result) => {
-      if (result.availability === "Available") {
+      if (result.availability === messageConstants.AVAILABLE) {
         setUsernamevalid(true);
-      } else if (result.availability === "Alreadytaken") {
+      } else if (result.availability === messageConstants.ALREADY_TAKEN) {
         setUsernamevalid(false);
       }
       setUsernamefocused(false);
     });
   };
 
+  const handlePasswordChange = (value) => {
+    setPassword(value);
+    if (Validate(value) === inputTypeConstants.PASSWORD) {
+      setPasswordValid(true);
+    } else {
+      setPasswordValid(false);
+    }
+  };
+
   return (
     <div className="mainContainer">
       <div className="upperContainer box card">
         <div className="instaTitleContainer">
-          <img
-            className="insta"
-            alt="Get it on Google Play"
-            src={instagram}
-          ></img>
-          <p>{messages.SIGNUP_INFO}</p>
+          <img className="insta" alt="Get it on Google Play" src={instagram} />
+          <p>{messageConstants.SIGNUP_INFO}</p>
         </div>
         <div className="inputContainer">
           <button className="loginWithFacebookButton">
@@ -138,7 +138,7 @@ const SignUp = () => {
             <p>Log in with Facebook</p>
           </button>
           <div className="orDiv">
-            <div className="line"></div>
+            <div className="line" />
             <p>OR</p>
             <div className="line"> </div>
           </div>
@@ -152,12 +152,10 @@ const SignUp = () => {
             />
             {idFocused ? null : (
               <img
-                className={
-                  "validationIcon " + (idValid ? "acceptable" : "wrong")
-                }
+                className={`validationIcon ${idValid ? "acceptable" : "wrong"}`}
                 alt=""
                 src={idValid ? acceptable : wrong}
-              ></img>
+              />
             )}
           </div>
 
@@ -173,7 +171,7 @@ const SignUp = () => {
                 className="validationIcon acceptable"
                 alt=""
                 src={acceptable}
-              ></img>
+              />
             )}
           </div>
 
@@ -184,28 +182,34 @@ const SignUp = () => {
               required
               handleChange={(e) => setUsername(e.target.value)}
               handleFocus={() => setUsernamefocused(true)}
-              handleBlur={(e) => handleBlur(e.target.value)}
+              handleBlur={(e) => handleUserNameBlur(e.target.value)}
             />
             {!usernameFocused ? (
               <img
                 className="validationIcon"
                 alt=""
                 src={usernameValid ? acceptable : wrong}
-              ></img>
+              />
             ) : null}
           </div>
 
           <CustomInput
             type="password"
             placeholder="Password"
-            handleChange={(e) => setPassword(e.target.value)}
+            handleChange={(e) => handlePasswordChange(e.target.value)}
             handleFocus={null}
             handleBlur={null}
           />
 
           {allowSignin === true ? <Navigate to="/homed" /> : null}
 
-          <button className="submitButton" onClick={handleSubmit}>
+          <button
+            className="submitButton canDisable"
+            onClick={handleSubmit}
+            disabled={
+              !(idValid && usernameValid && PasswordValid && fullname !== null)
+            }
+          >
             Sign Up
           </button>
 
@@ -233,18 +237,12 @@ const SignUp = () => {
             className="storeIcon"
             alt="Get it on Google Play"
             src={googleplaystore}
-          ></img>
-          <img
-            className="storeIcon"
-            alt="Get it on App Store"
-            src={appstore}
-          ></img>
+          />
+          <img className="storeIcon" alt="Get it on App Store" src={appstore} />
         </div>
       </div>
-
-      {/* <footer><Links/></footer>  */}
     </div>
   );
-};
+}
 
 export default SignUp;

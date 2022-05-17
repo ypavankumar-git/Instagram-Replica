@@ -1,74 +1,66 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../style.css";
 import { post } from "../../services/api_services/service";
-//import { encrypt, decrypt } from "../../services/encryption_service/service";
+import { encrypt } from "../../services/encryption_service/service";
 import { appstore, googleplaystore, instagram } from "../../assets/index";
 import { CustomInput } from "../index";
-import { setTokens } from "../../redux/actions/token";
-import store from "../../redux/store/store";
-import GetFeeds from "../../firebase/getFeeds";
 import Validate from "../../utilities/validate";
-import * as validationMessages from "../../constants/login";
-import * as urls from "../../constants/urls";
-import * as jose from "jose";
+import * as urlConstants from "../../constants/urlConstants";
+import * as messageConstants from "../../constants/messageConstants";
+import * as inputTypeConstants from "../../constants/inputTypeConstants";
 
-const Login = () => {
-  const login_url = urls.BACKEND_HOST + urls.LOGIN_URL;
+function Login() {
+  const login_url = urlConstants.BACKEND_HOST + urlConstants.LOGIN_URL;
   const secret = process.env.REACT_APP_SECRET;
-  // const tokenState = useSelector(state => state.TokenReducer);
-  //const tokenState = store.getState().TokenReducer;
 
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [wrongUsername, setWrongusername] = useState(null);
   const [wrongPassword, setWrongpassword] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     setWrongusername(null);
     setWrongpassword(null);
 
     let body = {};
 
     const type = Validate(username);
-    const encrypted_password = password;
 
-    if (type === "email") {
+    const encrypted_password = await encrypt(password, secret);
+
+    if (type === inputTypeConstants.EMAIL) {
       body = {
         email: username,
         password: encrypted_password,
       };
-    } else if (type === "mobile") {
+    } else if (type === inputTypeConstants.MOBILE) {
       body = {
         mobile: username,
         password: encrypted_password,
       };
-    } else if (type === "name") {
+    } else if (type === inputTypeConstants.NAME) {
       body = {
-        username: username,
+        username,
         password: encrypted_password,
       };
     }
 
+    console.log(body);
+
     post(login_url, body).then((data) => {
-      console.log(data);
-      if (data.message === "Wrong UserName") {
+      if (data.message === messageConstants.WRONG_USERNAME) {
         setWrongusername(true);
-      } else if (data.message === "Wrong Password") {
+      } else if (data.message === messageConstants.WRONG_PASSWORD) {
         setWrongpassword(true);
       } else {
         setWrongusername(false);
         setWrongpassword(false);
       }
 
-      //store.dispatch(setTokens(data));
-      //window.Cookies = data.id_token;
-
       localStorage.setItem("auth_token", data.id_token);
-
-      const parsedData = jose.decodeJwt(data.id_token, secret);
-      console.log(parsedData);
     });
   };
 
@@ -81,7 +73,7 @@ const Login = () => {
             alt="Get it on Google Play"
             src={instagram}
             style={{ marginBottom: "40px" }}
-          ></img>
+          />
         </div>
         <div className="inputContainer">
           <CustomInput
@@ -103,13 +95,17 @@ const Login = () => {
             <Navigate to="/homed" />
           ) : null}
 
-          <button className="submitButton" onClick={handleSubmit}>
+          <button
+            className="submitButton canDisable"
+            onClick={handleSubmit}
+            disabled={!(username !== "" && Validate(password) === "password")}
+          >
             Log In
           </button>
 
           <div className="facebookOptions">
             <div className="orDiv">
-              <div className="line"></div>
+              <div className="line" />
               <p>OR</p>
               <div className="line"> </div>
             </div>
@@ -121,11 +117,11 @@ const Login = () => {
 
             {wrongUsername ? (
               <p className="wrongUsername">
-                {validationMessages.WRONG_USERNAME}
+                {messageConstants.WRONG_USERNAME_VALIDATION_INFO}
               </p>
             ) : wrongPassword ? (
               <p className="wrongPassword">
-                {validationMessages.WRONG_PASSWORD}
+                {messageConstants.WRONG_PASSWORD_VALIDATION_INFO}
               </p>
             ) : null}
 
@@ -135,7 +131,7 @@ const Login = () => {
       </div>
 
       <div className="lowerContainer box card">
-        <p className="question">Don't have an account?</p>
+        <p className="question">Dont have an account?</p>
         <Link className="link" to="/signup">
           Sign up
         </Link>
@@ -151,18 +147,12 @@ const Login = () => {
             className="storeIcon"
             alt="Get it on Google Play"
             src={googleplaystore}
-          ></img>
-          <img
-            className="storeIcon"
-            alt="Get it on App Store"
-            src={appstore}
-          ></img>
+          />
+          <img className="storeIcon" alt="Get it on App Store" src={appstore} />
         </div>
       </div>
-
-      {/* <Links/> */}
     </div>
   );
-};
+}
 
 export default Login;

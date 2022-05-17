@@ -28,7 +28,6 @@
 }
 
 .upperContainer {
-  /* height: 80%; */
   margin-bottom: 10%;
 }
 
@@ -165,13 +164,13 @@ input:focus {
 }
 
 .submitButton {
-  background-color: skyblue;
-  color: white;
+  background-color: #0096f6;
+  cursor: pointer;
   height: 27px;
   border: 0;
   border-radius: 4px;
+  color: white;
   margin: 7px 0 5px 0;
-  cursor: pointer;
 }
 
 .termsAndConditions {
@@ -235,4 +234,13 @@ input:focus {
 }
 .df {
   position: relative;
+}
+
+.canDisable:disabled {
+  background-color: rgb(210, 242, 255);
+  border: 0;
+  cursor: default;
+}
+
+.submitButton:disabled {
 }

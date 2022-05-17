@@ -1,14 +1,33 @@
-import instagram from "../../assets/instagram.png";
+import React from "react";
+import PropTypes from "prop-types";
 import "./header.css";
-import search from "../../assets/search.svg";
-import explore from "../../assets/explore.svg";
-import home from "../../assets/home.svg";
-import interests from "../../assets/interests.svg";
-import messenger from "../../assets/messenger.svg";
-import posts from "../../assets/posts.svg";
-import man from "../../assets/man.png";
+import { Navigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import {
+  instagram,
+  search,
+  explore,
+  home,
+  interests,
+  messenger,
+  posts,
+  man,
+  logout,
+} from "../../assets/index";
+import store from "../../redux/store/store";
 
-const Header = (props) => {
+function Header(props) {
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.clear();
+    store.dispatch({
+      type: "clearFeeds",
+      payload: null,
+    });
+
+    navigate("/login");
+  };
+
   return (
     <div className="header">
       <div className="headerComponents">
@@ -19,7 +38,7 @@ const Header = (props) => {
             src={instagram}
             onClick={() => props.showFeeds(true)}
           />
-          <div className="spacingAfterTitle"></div>
+          <div className="spacingAfterTitle" />
         </div>
 
         <div className="search">
@@ -27,7 +46,7 @@ const Header = (props) => {
           <span className="searchPlaceHolder">Search</span>
         </div>
         <div className="OptionsContainer">
-          <div className="optionSpacing"></div>
+          <div className="optionSpacing" />
           <img
             className="options"
             src={home}
@@ -46,8 +65,21 @@ const Header = (props) => {
           />
         </div>
       </div>
+      <img
+        src={logout}
+        className="options logoutButton clickable"
+        onClick={() => {
+          handleLogOut();
+          <Navigate to="/login" />;
+        }}
+        alt="logout"
+      />
     </div>
   );
+}
+
+Header.propTypes = {
+  showFeeds: PropTypes.func,
 };
 
 export default Header;

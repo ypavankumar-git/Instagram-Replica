@@ -29,7 +29,6 @@
 }
 
 .feedHeader .profileName {
-  /* width: 80%; */
   margin-right: 5px;
 }
 
@@ -144,44 +143,3 @@
     width: calc(100vw);
   }
 }
-
-/* .commentPopup {
-  position: absolute;
-  left: 10%; 
-  height: 95vh;
-  width: 80vw;
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-   opacity: 2; 
-  background-color: #fdfbfb;
-}
-
-.commentPopupImageContainer {
-  display: flex;
-  align-items: center;
-  width: 50%;
-  background-color: black;
-}
-
-.commentPopupImageContainer .image {
-  object-fit: contain;
-  max-width: 100%;
-  height: auto;
-}
-
-.commentPopupActionsContainer {
-  width: 50%;
-} */
-
-/* .blur {
-  filter: blur(1px);
-}
-
-.visible {
-  visibility: visible;
-}
-
-.notVisible {
-  visibility: hidden;
-} */

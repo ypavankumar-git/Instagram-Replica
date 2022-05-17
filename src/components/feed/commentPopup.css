@@ -116,7 +116,6 @@
   display: block;
 }
 
-/* commentedTime
-likesForComment
-replyButton
-settings */
+.commentedTime {
+  font-weight: 400;
+}

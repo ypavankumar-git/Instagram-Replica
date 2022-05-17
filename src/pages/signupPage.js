@@ -1,12 +1,13 @@
+import React from "react";
 import { SignUp } from "../components/index";
 import "./style.css";
 
-const SignupPage = () => {
+function SignupPage() {
   return (
     <div className="loginPageWrapper">
       <SignUp />
     </div>
   );
-};
+}
 
 export default SignupPage;
