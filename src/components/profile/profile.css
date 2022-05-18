@@ -79,3 +79,37 @@
   font-size: 14px;
   font-weight: 300px;
 }
+
+@media only screen and (max-width: 735px) {
+  .profileContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin-top: 40px;
+  }
+
+  .profileInfo{
+    height: 100px;
+  }
+
+  .profileInfo .profileImage {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    height: 100%;
+    width: 100px;
+  }
+
+  .profileInfo .profileImage img {
+    height: 90px;
+    width: 90px;
+  }
+
+  .profileCounts{
+    display: none;
+  }
+
+  .profileDetails{
+     margin-left: 20px;
+  }
+}

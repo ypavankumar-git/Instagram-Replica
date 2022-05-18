@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../style.css";
@@ -47,8 +46,6 @@ function Login() {
         password: encrypted_password,
       };
     }
-
-    console.log(body);
 
     post(login_url, body).then((data) => {
       if (data.message === messageConstants.WRONG_USERNAME) {

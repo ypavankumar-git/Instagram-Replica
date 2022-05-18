@@ -27,6 +27,8 @@ import radioButton from './radioButton.svg';
 import radioButtonSelected from './radioButtonSelected.svg';
 import loading from './loading.svg';
 import logout from './logout.svg';
+import profileBlackAndWhite from "./profileBlackAndWhite.svg";
+import switcher from "./switch.svg";
 
 export {
   accept,
@@ -58,4 +60,6 @@ export {
   radioButtonSelected,
   loading,
   logout,
+  profileBlackAndWhite,
+  switcher
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./profile.css";
 import man from "../../assets/man.png";
 import profileSettings from "../../assets/profileSettings.svg";

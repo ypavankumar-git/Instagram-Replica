@@ -3,3 +3,56 @@
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+.profileWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbfbfb;
+  overflow: scroll;
+}
+
+.mobileView-ProfileCounts{
+  display: none;
+}
+
+@media only screen and (max-width:735px) {
+  .profileWrapper {
+    background-color: #fbfbfb;
+    overflow: scroll;
+    width: 100vw;
+  }
+  .profilePageStoriesWrapper{
+    width: 95vw;
+  }
+  .mobileView-ProfileCounts{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.5px solid #8b8b8b;
+    }
+  .mobileView-Box{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .mobileView-Box p{
+    margin: 0;
+}
+.mobileView-Count{
+  font-size: 13px;
+  font-weight: 700;
+}
+.mobileView-Title{
+  font-size: 13px;
+  font-weight: 400;
+  color: #8b8b8b;
+}
+}

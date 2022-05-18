@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState }from "react";
 import PropTypes from "prop-types";
 import "./header.css";
 import { Navigate } from "react-router";
@@ -13,10 +13,23 @@ import {
   posts,
   man,
   logout,
+  profileBlackAndWhite,
+  switcher,
+  save,
+  profileSettings
 } from "../../assets/index";
 import store from "../../redux/store/store";
 
 function Header(props) {
+
+  const [showProfileCard, setShowProfileCard] = useState(false);
+  const toggleProfileCard = () => {
+    setShowProfileCard(prevState => !prevState) ;
+  }
+  const handleProfileClick = () => {
+    setShowProfileCard(false);
+    props.showFeeds(false);
+  }
   const navigate = useNavigate();
   const handleLogOut = () => {
     localStorage.clear();
@@ -61,19 +74,54 @@ function Header(props) {
             className="options profileIcon clickable"
             src={man}
             alt="profile"
-            onClick={() => props.showFeeds(false)}
+            onClick={() => toggleProfileCard()}
           />
+         { showProfileCard ? <div className="profileCard clickable">
+            <div className="profileCardOptions">
+              <div className="profileCardOptionsIconContainer">
+                <img className="profileCardOptionsIcon" src={profileBlackAndWhite}/>
+              </div>
+              <p className="profileCardOptionsTitle" onClick={() => handleProfileClick()}>
+                Profile
+              </p>
+            </div>
+            <div className="profileCardOptions">
+            <div className="profileCardOptionsIconContainer">
+              <img className="profileCardOptionsIcon" src={save}/>
+              </div>
+              <p className="profileCardOptionsTitle">
+                Save
+              </p>
+            </div>
+            <div className="profileCardOptions">
+            <div className="profileCardOptionsIconContainer">
+              <img className="profileCardOptionsIcon" src={profileSettings}/>
+              </div>
+              <p className="profileCardOptionsTitle">
+                Settings
+              </p>
+            </div>
+            <div className="profileCardOptions">
+            <div className="profileCardOptionsIconContainer">
+              <img className="profileCardOptionsIcon" src={switcher}/>
+              </div>
+              <p className="profileCardOptionsTitle">
+                Switch accounts
+              </p>
+            </div>
+            <p className="logoutOption" 
+            onClick={() => {
+              handleLogOut();
+              <Navigate to="/login" />;
+        }}>
+              Log out
+            </p>
+            <div className="arrowHand"></div>
+          </div>
+          
+         : null }
         </div>
       </div>
-      <img
-        src={logout}
-        className="options logoutButton clickable"
-        onClick={() => {
-          handleLogOut();
-          <Navigate to="/login" />;
-        }}
-        alt="logout"
-      />
     </div>
   );
 }

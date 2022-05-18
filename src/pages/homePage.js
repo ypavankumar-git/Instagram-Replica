@@ -20,9 +20,7 @@ function HomePage() {
         </div>
       ) : null}
       {!showFeeds ? (
-        <div className="profileWrapper">
-          <ProfileSection />
-        </div>
+        <ProfileSection />
       ) : null}
     </div>
   );

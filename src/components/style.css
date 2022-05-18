@@ -7,12 +7,12 @@
   border: 1px solid #dbdbdb;
 }
 
-.input {
+/* .input {
   border-radius: 2px;
   margin-bottom: 2.5%;
   height: 30px;
   background-color: #f6f6f6;
-}
+} */
 
 .insta {
   height: 50px;
@@ -64,6 +64,7 @@
   align-items: center;
   cursor: pointer;
   height: 30px;
+  width: 237px;
   color: white;
   background-color: rgb(67, 144, 245);
   font-style: white;
@@ -167,6 +168,7 @@ input:focus {
   background-color: #0096f6;
   cursor: pointer;
   height: 27px;
+  width: 237px;
   border: 0;
   border-radius: 4px;
   color: white;
@@ -242,5 +244,42 @@ input:focus {
   cursor: default;
 }
 
-.submitButton:disabled {
+@media only screen and (max-width: 450px) {
+   .mainContainer{
+     width: 100vw;
+     height: 100vh;
+     background-color: white;
+     margin:0;
+   }
+
+   .box{
+     border: none;
+   }
+
+   .card{
+     border: none
+   }
+
+   .inputContainer {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 0% 12% 7% 12%;
+    align-items: center;
+  }
+
+  input {
+    background-color: #ffffff;
+  }
+
+  .link {
+    text-decoration: none;
+    text-align: center;
+    font-size: 75%;
+    padding-top: 4%;
+  }
+
+  .app{
+    background-color: #ffffff;
+  }
 }

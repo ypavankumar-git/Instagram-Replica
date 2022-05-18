@@ -44,3 +44,11 @@
 .addStoryIcon {
   border: 0.5px solid #bbbbbb;
 }
+
+@media only screen and (max-width:735px){
+  .storyContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}

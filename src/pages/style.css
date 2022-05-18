@@ -30,15 +30,6 @@
   box-sizing: border-box;
 }
 
-.profileWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #fbfbfb;
-  overflow: scroll;
-}
-
 ::-webkit-scrollbar {
   display: none;
 }

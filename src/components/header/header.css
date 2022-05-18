@@ -68,6 +68,7 @@
 }
 
 .profileIcon {
+  position: relative;
   width: 24px;
 }
 
@@ -80,6 +81,74 @@
   background-color: #ebebeb;
   color: #8e8e8e;
   padding: 8px;
+}
+
+.profileCard{
+  position: absolute;
+  width: 180px;
+  height: 135px;
+  z-index: 3;
+  opacity: 1;
+  background-color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 3px;
+  top: 50px;
+  right: 70px;
+  box-shadow: 0.5px 0.5px 3px black;
+}
+
+.profileCardOptions{
+  display: flex;
+  flex-direction: row;
+  padding: 6px;
+}
+
+.profileCardOptions p{
+margin: 0;
+margin-left: 10px;
+width: 100%;
+}
+
+.profileCardOptions:hover{
+  background-color: #f6f6f6;
+}
+
+.profileCardOptionsIconContainer{
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 15px;
+  width: 15px;
+}
+
+.profileCardOptionsIcon{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.logoutOption{
+  margin: 0;
+  padding: 6px;
+  padding-left: 10px;
+  border-top: 0.5px solid #dbdbdb;
+}
+
+.logoutOption:hover{
+  background-color: #f6f6f6;
+}
+
+.arrowHand{
+  position: relative;
+  width: 14px;
+  height: 14px;
+  box-shadow: -0.5px -0.5px 3px black;
+  clip-path: inset(0px 1px 1px 0px);
+  z-index: 3;
+  opacity: 1;
+  background-color: #ffffff;
+  top: -140px;
+  right: -149px;
+  transform: rotate(45deg);
 }
 
 @media only screen and (max-width: 975px) {
