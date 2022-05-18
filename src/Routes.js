@@ -5,8 +5,7 @@ import LoginPage from "./pages/loginPage";
 import SignUpPage from "./pages/signupPage";
 import AuthorizedPages from "./pages/authorizedPages";
 import HomePage from "./pages/homePage";
-import Story from "./components/stories/stories";
-import ProfilePage from "./pages/profilePage";
+import NotFound from "./components/notFound/notFound";
 
 function Paths() {
   return (
@@ -16,17 +15,15 @@ function Paths() {
           <Route path="/" exact element={<LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/stories" element={<Story selfProfile />} />
           <Route
-            path="/homed"
+            path="/home"
             element={
               <AuthorizedPages>
                 <HomePage />
               </AuthorizedPages>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>

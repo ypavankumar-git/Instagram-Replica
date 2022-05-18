@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../style.css";
-import { post } from "../../services/api_services/service";
-import { encrypt } from "../../services/encryption_service/service";
+import { post } from "../../services/apiServices/service";
+import { encrypt } from "../../services/encryptionService/service";
 import { appstore, googleplaystore, instagram } from "../../assets/index";
 import { CustomInput } from "../index";
 import Validate from "../../utilities/validate";
-import * as urlConstants from "../../constants/urlConstants";
-import * as messageConstants from "../../constants/messageConstants";
-import * as inputTypeConstants from "../../constants/inputTypeConstants";
+import urlConstants from "../../constants/urlConstants";
+import messageConstants from "../../constants/messageConstants";
+import inputTypeConstants from "../../constants/inputTypeConstants";
+import toastTypeConstants from "../../constants/toastTypeConstants";
+import showToast from "../../services/toasterService/showToast";
 
 function Login() {
   const login_url = urlConstants.BACKEND_HOST + urlConstants.LOGIN_URL;
@@ -53,6 +55,7 @@ function Login() {
       } else if (data.message === messageConstants.WRONG_PASSWORD) {
         setWrongpassword(true);
       } else {
+        showToast(toastTypeConstants.SUCCESS, "Logged in Successfully", 2000);
         setWrongusername(false);
         setWrongpassword(false);
       }
@@ -89,7 +92,7 @@ function Login() {
           />
 
           {wrongUsername === false && wrongPassword === false ? (
-            <Navigate to="/homed" />
+            <Navigate to="/home" />
           ) : null}
 
           <button
@@ -108,7 +111,7 @@ function Login() {
             </div>
 
             <div className="loginWithFacebook">
-              <div className="f">f</div>
+              <div className="fStyling">f</div>
               <p>Log in with Facebook</p>
             </div>
 

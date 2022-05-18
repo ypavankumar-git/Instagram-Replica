@@ -1,3 +1,6 @@
+import showToast from "../toasterService/showToast";
+import toastTypeConstants from "../../constants/toastTypeConstants";
+
 export const get = async (url) => {
   try {
     const response = await fetch(url, {
@@ -6,18 +9,20 @@ export const get = async (url) => {
         "Content-Type": "application/json",
       },
     });
-    await setTimeout(10000);
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    window.alert("Network connection error, please try again after sometime");
-  }
+    if (response.status >= 200 && response.status <= 299) {
+      const data = await response.json();
+      return data;
+    } else {
+      showToast(
+        toastTypeConstants.ERROR,
+        response.status + " : " + response.statusText,
+        2500
+      );
+    }
+  } catch (err) {}
 };
 
 export const post = async (url, reqBody) => {
-  console.log(url);
-  console.log(reqBody);
-
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -26,13 +31,17 @@ export const post = async (url, reqBody) => {
       },
       body: JSON.stringify(reqBody),
     });
-
-    const data = await response.json();
-
-    return data;
-  } catch (err) {
-    window.alert("Network connection error, please try again after sometime");
-  }
+    if (response.status >= 200 && response.status <= 299) {
+      const data = await response.json();
+      return data;
+    } else {
+      showToast(
+        toastTypeConstants.ERROR,
+        response.status + " : " + response.statusText,
+        2500
+      );
+    }
+  } catch (err) {}
 };
 
 export const put = async (url, reqBody) => {

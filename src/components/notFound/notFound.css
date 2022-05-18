@@ -1,0 +1,28 @@
+.notFoundPageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.notFoundMessage1 {
+  font-size: 150px;
+  font-weight: 800;
+}
+
+.notFoundMessage2 {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.notFoundPageContainer p {
+  margin: 0;
+}
+
+.sadEmoji {
+  margin-top: 20px;
+  height: 200px;
+  width: 200px;
+}

@@ -83,7 +83,7 @@
   padding: 8px;
 }
 
-.profileCard{
+.profileCard {
   position: absolute;
   width: 180px;
   height: 135px;
@@ -98,46 +98,46 @@
   box-shadow: 0.5px 0.5px 3px black;
 }
 
-.profileCardOptions{
+.profileCardOptions {
   display: flex;
   flex-direction: row;
   padding: 6px;
 }
 
-.profileCardOptions p{
-margin: 0;
-margin-left: 10px;
-width: 100%;
+.profileCardOptions p {
+  margin: 0;
+  margin-left: 10px;
+  width: 100%;
 }
 
-.profileCardOptions:hover{
+.profileCardOptions:hover {
   background-color: #f6f6f6;
 }
 
-.profileCardOptionsIconContainer{
+.profileCardOptionsIconContainer {
   margin-top: auto;
   margin-bottom: auto;
   height: 15px;
   width: 15px;
 }
 
-.profileCardOptionsIcon{
+.profileCardOptionsIcon {
   max-height: 100%;
   max-width: 100%;
 }
 
-.logoutOption{
+.logoutOption {
   margin: 0;
   padding: 6px;
   padding-left: 10px;
   border-top: 0.5px solid #dbdbdb;
 }
 
-.logoutOption:hover{
+.logoutOption:hover {
   background-color: #f6f6f6;
 }
 
-.arrowHand{
+.arrowHand {
   position: relative;
   width: 14px;
   height: 14px;
@@ -149,6 +149,24 @@ width: 100%;
   top: -140px;
   right: -149px;
   transform: rotate(45deg);
+}
+
+.logoutDialogContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutMessage1 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.logoutMessage2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8d8d8d;
 }
 
 @media only screen and (max-width: 975px) {

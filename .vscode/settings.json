@@ -2,5 +2,7 @@
     "prettier.jsxSingleQuote": true,
     "prettier.requireConfig": true,
     "prettier.singleQuote": true,
-    "prettier.useTabs": true
+    "prettier.useTabs": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../style.css";
-import { post } from "../../services/api_services/service";
-import { encrypt } from "../../services/encryption_service/service";
+import { post } from "../../services/apiServices/service";
+import { encrypt } from "../../services/encryptionService/service";
 import { setTokens } from "../../redux/actions/token";
 import Validate from "../../utilities/validate";
 import {
@@ -15,9 +15,12 @@ import {
 } from "../../assets/index";
 import { CustomInput } from "../index";
 import store from "../../index";
-import * as messageConstants from "../../constants/messageConstants";
-import * as urlConstants from "../../constants/urlConstants";
-import * as inputTypeConstants from "../../constants/inputTypeConstants";
+import messageConstants from "../../constants/messageConstants";
+import urlConstants from "../../constants/urlConstants";
+import inputTypeConstants from "../../constants/inputTypeConstants";
+import toastTypeConstants from "../../constants/toastTypeConstants";
+import { toast } from "react-toastify";
+import showToast from "../../services/toasterService/showToast";
 
 function SignUp() {
   const signUpUrl = urlConstants.BACKEND_HOST + urlConstants.SIGNUP_URL;
@@ -61,6 +64,7 @@ function SignUp() {
     post(signUpUrl, body).then((data) => {
       if (data.id_token) {
         setAllowSignin(true);
+        showToast(toastTypeConstants.SUCCESS, "SignedUp Successfully", 2000);
       }
 
       store.dispatch(setTokens(data));
@@ -91,6 +95,8 @@ function SignUp() {
         setIdvalid(true);
       } else if (result.availability === messageConstants.ALREADY_TAKEN) {
         setIdvalid(false);
+      } else if (result.errorMessage) {
+        toast.error(result.errorMessage);
       }
       setIdfocused(false);
     });
@@ -133,7 +139,7 @@ function SignUp() {
         </div>
         <div className="inputContainer">
           <button className="loginWithFacebookButton">
-            <div className="f">f</div>
+            <div className="fStyling">f</div>
             <p>Log in with Facebook</p>
           </button>
           <div className="orDiv">
@@ -200,7 +206,7 @@ function SignUp() {
             handleBlur={null}
           />
 
-          {allowSignin === true ? <Navigate to="/homed" /> : null}
+          {allowSignin === true ? <Navigate to="/home" /> : null}
 
           <button
             className="submitButton canDisable"

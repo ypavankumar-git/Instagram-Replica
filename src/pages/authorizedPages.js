@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router";
 import * as jose from "jose";
 import store from "../redux/store/store";
-
+import showToast from "../services/toasterService/showToast";
+import toastTypeConstants from "../constants/toastTypeConstants";
 function AuthorizedPages({ children }) {
   const [isTokenValid, setIsTokenValid] = useState(false);
   const secret = process.env.REACT_APP_SECRET;
@@ -19,7 +20,11 @@ function AuthorizedPages({ children }) {
           type: "clearFeeds",
           payload: null,
         });
-        window.alert("Session Expired \nPlease Login again");
+        showToast(
+          toastTypeConstants.ERROR,
+          "Session Expired \nPlease Login again",
+          2000
+        );
         await setIsTokenValid(true);
       } else {
         await setIsTokenValid(false);

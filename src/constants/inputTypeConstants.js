@@ -1,4 +1,8 @@
-export const NAME = 'name';
-export const EMAIL = 'email';
-export const MOBILE = 'mobile';
-export const PASSWORD = 'password';
+const inputTypeConstants = {
+  NAME: "name",
+  EMAIL: "email",
+  MOBILE: "mobile",
+  PASSWORD: "password",
+};
+
+export default inputTypeConstants;

@@ -1,4 +1,4 @@
-import React, {useState }from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./header.css";
 import { Navigate } from "react-router";
@@ -16,29 +16,36 @@ import {
   profileBlackAndWhite,
   switcher,
   save,
-  profileSettings
+  profileSettings,
 } from "../../assets/index";
 import store from "../../redux/store/store";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
 
 function Header(props) {
-
   const [showProfileCard, setShowProfileCard] = useState(false);
+  const [showLogoutDialog, setShowLogoutDialog] = useState(false);
+
   const toggleProfileCard = () => {
-    setShowProfileCard(prevState => !prevState) ;
-  }
+    setShowProfileCard((prevState) => !prevState);
+  };
   const handleProfileClick = () => {
     setShowProfileCard(false);
     props.showFeeds(false);
-  }
+  };
   const navigate = useNavigate();
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    setShowLogoutDialog(true);
+    setTimeout(() => {
+      setShowLogoutDialog(false);
+      navigate("/login");
+    }, 1000);
+
     localStorage.clear();
     store.dispatch({
       type: "clearFeeds",
       payload: null,
     });
-
-    navigate("/login");
   };
 
   return (
@@ -76,52 +83,70 @@ function Header(props) {
             alt="profile"
             onClick={() => toggleProfileCard()}
           />
-         { showProfileCard ? <div className="profileCard clickable">
-            <div className="profileCardOptions">
-              <div className="profileCardOptionsIconContainer">
-                <img className="profileCardOptionsIcon" src={profileBlackAndWhite}/>
+          {showProfileCard ? (
+            <div className="profileCard clickable">
+              <div className="profileCardOptions">
+                <div className="profileCardOptionsIconContainer">
+                  <img
+                    className="profileCardOptionsIcon"
+                    src={profileBlackAndWhite}
+                  />
+                </div>
+                <p
+                  className="profileCardOptionsTitle"
+                  onClick={() => handleProfileClick()}
+                >
+                  Profile
+                </p>
               </div>
-              <p className="profileCardOptionsTitle" onClick={() => handleProfileClick()}>
-                Profile
-              </p>
-            </div>
-            <div className="profileCardOptions">
-            <div className="profileCardOptionsIconContainer">
-              <img className="profileCardOptionsIcon" src={save}/>
+              <div className="profileCardOptions">
+                <div className="profileCardOptionsIconContainer">
+                  <img className="profileCardOptionsIcon" src={save} />
+                </div>
+                <p className="profileCardOptionsTitle">Save</p>
               </div>
-              <p className="profileCardOptionsTitle">
-                Save
-              </p>
-            </div>
-            <div className="profileCardOptions">
-            <div className="profileCardOptionsIconContainer">
-              <img className="profileCardOptionsIcon" src={profileSettings}/>
+              <div className="profileCardOptions">
+                <div className="profileCardOptionsIconContainer">
+                  <img
+                    className="profileCardOptionsIcon"
+                    src={profileSettings}
+                  />
+                </div>
+                <p className="profileCardOptionsTitle">Settings</p>
               </div>
-              <p className="profileCardOptionsTitle">
-                Settings
-              </p>
-            </div>
-            <div className="profileCardOptions">
-            <div className="profileCardOptionsIconContainer">
-              <img className="profileCardOptionsIcon" src={switcher}/>
+              <div className="profileCardOptions">
+                <div className="profileCardOptionsIconContainer">
+                  <img className="profileCardOptionsIcon" src={switcher} />
+                </div>
+                <p className="profileCardOptionsTitle">Switch accounts</p>
               </div>
-              <p className="profileCardOptionsTitle">
-                Switch accounts
+              <p
+                className="logoutOption"
+                onClick={() => {
+                  handleLogOut();
+                  <Navigate to="/login" />;
+                }}
+              >
+                Log out
               </p>
+              <div className="arrowHand"></div>
             </div>
-            <p className="logoutOption" 
-            onClick={() => {
-              handleLogOut();
-              <Navigate to="/login" />;
-        }}>
-              Log out
-            </p>
-            <div className="arrowHand"></div>
-          </div>
-          
-         : null }
+          ) : null}
         </div>
       </div>
+      <Dialog
+        open={showLogoutDialog}
+        PaperProps={{
+          sx: { width: "360px", height: "140px", borderRadius: "15px" },
+        }}
+      >
+        <DialogContent>
+          <div className="logoutDialogContainer">
+            <p className="logoutMessage1">Logging Out</p>
+            <p className="logoutMessage2">You need to log back in.</p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

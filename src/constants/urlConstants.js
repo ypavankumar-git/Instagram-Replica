@@ -1,6 +1,10 @@
-export const BACKEND_HOST = 'http://localhost:3001/';
-export const LOGIN_URL = 'login';
-export const SIGNUP_URL = 'signup';
-export const CHECKID_URL = 'checkid';
-export const CHECKUSERNAME_URL = 'checkusername';
-export const USERPROFILE_URL = 'https://www.instagram.com/username/?__a=1';
+const urlConstants = {
+  BACKEND_HOST: "http://localhost:3001/",
+  LOGIN_URL: "login",
+  SIGNUP_URL: "signup",
+  CHECKID_URL: "checkid",
+  CHECKUSERNAME_URL: "checkusername",
+  USERPROFILE_URL: "https://www.instagram.com/username/?__a=1",
+};
+
+export default urlConstants;
