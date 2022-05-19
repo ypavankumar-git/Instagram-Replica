@@ -241,7 +241,7 @@ input:focus {
   .mainContainer {
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: #ffffff;
     margin: 0;
   }
 
@@ -273,6 +273,10 @@ input:focus {
   }
 
   .app {
+    background-color: #ffffff;
+  }
+
+  .applinkContainer {
     background-color: #ffffff;
   }
 }
